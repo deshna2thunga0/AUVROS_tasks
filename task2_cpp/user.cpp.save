@@ -1,0 +1,8 @@
+add_message_files(
+  FILES
+  custom.msg
+)
+generate_messages(
+  DEPENDENCIES
+  std_msgs
+)
