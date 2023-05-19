@@ -35,7 +35,7 @@ bool getline_async(string& str, char delim = '\n') { // this is for getline to b
 }
 void cb(const task2_cpp::custom::ConstPtr& ptr){ //custom object which has defined type for the messages on topic
 if(ptr->name != pers_ID)
-cout<<("["<<ptr->name.c_str())<<"] :"<<(ptr->data.c_str())<<endl;
+cout<<"["<<(ptr->name.c_str())<<"] :"<<(ptr->data.c_str())<<endl;
 }
 
 int main(int argc, char **argv)
