@@ -1,7 +1,7 @@
 import rospy
 from std_msgs.msg import String
 
-def callback(data):
+def callback(data): #data is of type std_msgs/String
     #rospy.loginfo('I heard %s', data.data)
     print(data.data)
 

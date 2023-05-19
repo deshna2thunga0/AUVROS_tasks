@@ -19,8 +19,6 @@ int main(int argc , char ** argv){
     cout<<"Enter data stream : "<<endl;
     getline(cin,datas);
     ros::Subscriber sub = nr.subscribe(datas,1000,cb); //cb callback function
-
     ros::spin(); //listens for interrupts doesnt exit until kill signal ctrl c comes
-
     return 0;
 }

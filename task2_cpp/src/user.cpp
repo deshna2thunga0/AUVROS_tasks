@@ -9,7 +9,7 @@
 using namespace std;
 string pers_ID;
 
-bool getline_async(string& str, char delim = '\n') {
+bool getline_async(string& str, char delim = '\n') { // this is for getline to be interuppted if there's incoming messages
 
     static std::string lineSoFar;
     char inChar;
@@ -33,9 +33,9 @@ bool getline_async(string& str, char delim = '\n') {
 
     return lineRead;
 }
-void cb(const task2_cpp::custom::ConstPtr& ptr){
+void cb(const task2_cpp::custom::ConstPtr& ptr){ //custom object which has defined type for the messages on topic
 if(ptr->name != pers_ID)
-cout<<(ptr->name.c_str())<<":"<<(ptr->data.c_str())<<endl;
+cout<<("["<<ptr->name.c_str())<<"] :"<<(ptr->data.c_str())<<endl;
 }
 
 int main(int argc, char **argv)
@@ -45,12 +45,11 @@ cout<<"Enter username:";
 getline(cin,pers_ID);
 ros::init(argc,argv,pers_ID+"Publisher");
 ros::NodeHandle nh;
-ros::Publisher pub = nh.advertise<task2_cpp::custom>("data",1000);
+ros::Publisher pub = nh.advertise<task2_cpp::custom>("chat",1000); //topic name is chat
 ros::Rate loop_rate(10);
-//cout<<"Node has been initialised\n";
 
-//ros::init(argc,argv,pers_ID+"Subscriber");
-ros::Subscriber sub = nh.subscribe("data",1000,cb);
+//ros::init(argc,argv,pers_ID+"Subscriber"); // is incorrect. because this is only one node
+ros::Subscriber sub = nh.subscribe("chat",1000,cb);
 //ros::spin();
 //cout<<"-->";
 while(ros::ok())
