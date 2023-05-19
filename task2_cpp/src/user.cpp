@@ -43,6 +43,7 @@ int main(int argc, char **argv)
 ios_base::sync_with_stdio(false);
 cout<<"Enter username:";
 getline(cin,pers_ID);
+cout<<"Entered common chatroom"<<endl;
 ros::init(argc,argv,pers_ID+"Publisher");
 ros::NodeHandle nh;
 ros::Publisher pub = nh.advertise<task2_cpp::custom>("chat",1000); //topic name is chat
